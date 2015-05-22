@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: WP Theme Tutorial - US States
-Plugin URI: http://wpthemetutorial.com @todo put in the proper url
+Plugin URI: http://wpthemetutorial.com 
 Description: Adds a taxonomy for US States and prepopulates it with the states
-Version: 1.0
-Author: WP Theme Tutorial, Curis McHale
+Version: 1.1
+Author: WP Theme Tutorial, Curis McHale, Kenneth White
 Author URI: http://wpthemetutorial.com
 License: GPLv2 or later
 */
@@ -35,6 +35,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 function theme_t_wp_custom_taxonomies() {
 
+  // Designate specific post types to add states to
+  $post_types = array ('location');
+  
+  // Check to be sure post types exist
+  // If not, add to 'post' as default
+  $post_types_checked = array();
+  foreach ( $post_types as $post_type ) {
+  	if ( post_type_exists ( $post_type ) ) {
+  		$post_types_checked[] = $post_type;
+  	} else {
+  		$post_types_checked[] = 'post';
+  	}
+  }
+  $post_types_checked = array_unique( $post_types_checked );
+  
+  // If post type check comes up empty, then just add to posts
+  if ( empty( $post_types_checked ) ) {
+  	$post_types_checked = array ('post');
+  }
+  
   // Add new taxonomy, make it hierarchical (like categories)
   $labels = array(
     'name'              => _x( 'State', 'taxonomy general name' ),
@@ -50,7 +70,7 @@ function theme_t_wp_custom_taxonomies() {
     'menu_name'         => __( 'State' ),
   );
 
-  register_taxonomy( 'theme_t_wp_us_state', array( 'post' ), array(
+  register_taxonomy( 'theme_t_wp_us_state', $post_types_checked, array(
     'hierarchical' => true,
     'labels'       => $labels,
     'show_ui'      => true,
