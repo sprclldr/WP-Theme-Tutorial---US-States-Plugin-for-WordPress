@@ -4,7 +4,7 @@ Plugin Name: WP Theme Tutorial - US States
 Plugin URI: http://wpthemetutorial.com 
 Description: Adds a taxonomy for US States and prepopulates it with the states
 Version: 1.1
-Author: WP Theme Tutorial, Curis McHale, Kenneth White
+Author: WP Theme Tutorial, Curtis McHale, Kenneth White
 Author URI: http://wpthemetutorial.com
 License: GPLv2 or later
 */
