@@ -9,11 +9,11 @@ Stable tag: 1.1
 
 ~Current Version:1.1~
 
-Adds US state taxonomy to WordPress posts and populates the terms.
+Adds US state taxonomy to any WordPress post type and populates the terms.
 
 == Description ==
 
-Adds US state taxonomy to WordPress post type and populates the terms.
+Adds US state taxonomy to any WordPress post type and populates the terms.
 
 == Installation ==
 
